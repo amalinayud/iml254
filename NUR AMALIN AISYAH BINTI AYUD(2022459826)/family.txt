@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HomePage</title>
+   <link rel="stylesheet" type="text/css" href="styles.css"> 
+   <style>
+      body {
+         background: linear-gradient(to left,#F5CBA7, #F5A7DF); /* Gradient background from pink to beige */
+         text-align: center; /* Center-align all text within the body */
+         margin: 0; /* Reset default margin */
+         padding: 0; /* Reset default padding */
+         position: relative; /* Set position relative to allow absolute positioning of elements */
+      }
+
+     .DishonorableMention {
+        font-family: "Dishonorable Mention", Comic Sans, sans-serif;
+        font-size: 60px;
+        color: #F9F9F9; /* Set font color to white for better visibility on the gradient background */
+    }
+
+      #logo {
+         position: absolute;
+         top:5px;
+         left:5px;
+      }
+      }
+      /* Style for the "scroll to top" button */
+      #scrollToTopBtn {
+        display: none; /* Initially hide the button */
+        position: fixed; /* Fixed position on the page */
+        bottom: 20px; /* Distance from the bottom */
+        right: 30px; /* Distance from the right */
+        z-index: 99; /* Ensure the button appears above other content */
+        background-color: #555; /* Button background color */
+        color: white; /* Button text color */
+        border: none; /* Remove button border */
+        outline: none; /* Remove button outline */
+        cursor: pointer; /* Add cursor pointer on hover */
+        padding: 15px; /* Padding inside the button */
+        border-radius: 50%; /* Border radius to create a round button */
+      }
+
+      #scrollToTopBtn:hover {
+        background-color: #333; /* Darker background color on hover */
+      }
+
+      .menu {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+      }
+
+      .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+
+      .menu ul li a {
+        text-decoration: none;
+        color: #FFFFFF; /* Set font color to white */
+        font-family: Lobster Two;
+        font-size: 20px;
+      }
+
+      .menu ul li a:hover {
+        color: #FFFF00; /* Change color on hover */
+      }
+
+footer {
+    color: #fff; /* Text color of the footer */
+    padding: 5 px 0; /* Padding for the footer content */
+    position: fixed; /* Position the footer */
+    bottom: 0; /* Align the footer at the bottom of the viewport */
+    left: 0; /* Align the footer to the left */
+    width: 100%; /* Full width of the page */
+    text-align: center; /* Center-align the content within the footer */
+}
+
+}
+
+    }
+
+   </style>
+
+<script>
+!function(e){if(!window.pintrk){window.pintrk = function () {
+window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+  n=window.pintrk;n.queue=[],n.version="3.0";var
+  t=document.createElement("script");t.async=!0,t.src=e;var
+  r=document.getElementsByTagName("script")[0];
+  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+pintrk('load', '2614378496935', {em: '<user_email_address>'});
+pintrk('page');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt=""
+  src="image.me.JPG" />
+</noscript>
+<style>
+.work-scale {transform: scale(0.95);}
+</style>
+
+</head>
+<body>
+   <div class="menu">
+      <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="aboutme.html">AboutMe</a></li>
+         <li><a href="#">Family</a></li>
+         <li><a href="#">Friend</a></li>
+         <li><a href="#">Education</a></li>
+      </ul>
+   </div>
+   
+   <div class="frame">
+      <img src="image/logo.png" alt="Logo" width="200" height="200" id="logo">
+      <br><br>
+      <h1 class="DishonorableMention">MALING !!</h1>
+   </div>
+
+      <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">UP</button>
+
+   <footer>
+      <div class="footer-content">
+         <p>&copy; 2024 Nur Amalin Aisyah . All Rights Reserved.</p>
+      </div>
+   </footer>
+
+   <script>
+     function scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    }
+
+    // Show/hide the button based on scroll position
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("scrollToTopBtn").style.display = "block";
+      } else {
+        document.getElementById("scrollToTopBtn").style.display = "none";
+      }
+   </script>
+
+</body>
+</html>
