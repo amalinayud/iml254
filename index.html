@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to left, #F5CBA7, #F5A7DF);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            font-family: 'Lobster Two', cursive;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(to left, #333333, #111111);
+            color: #FFFFFF;
+        }
+
+        .menu {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            z-index: 1000;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            transition: background 0.5s ease;
+        }
+
+        .menu.dark-mode {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .menu ul li {
+            margin: 0 15px;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #333333;
+            font-family: 'Lobster Two', cursive;
+            font-size: 20px;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5a7df 0%, #f5cba7 100%);
+            border-radius: 50%;
+            z-index: -1;
+            transition: transform 0.4s ease;
+            transform: scale(0);
+        }
+
+        .menu ul li a:hover::before {
+            transform: scale(1);
+        }
+
+        body.dark-mode .menu ul li a {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+            }
+            .menu ul li {
+                margin: 10px 0;
+            }
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+       .profile-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 10px;
+            background-color: white;
+            border: 2px solid #8a4baf;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+      .DishonorableMention {
+            font-family: 'Lobster Two', cursive;
+            font-size: 24px;
+            color: #8a4baf;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+        body.dark-mode .DishonorableMention {
+            color: #FFD700;
+        }
+
+        .description {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            color: #333333;
+            margin: 20px auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            padding: 10px;
+            background-color: #F9F9F9;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease, background 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark-mode .description {
+            background-color: #444444;
+            color: #FFFFFF;
+        }
+
+        .frame-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.5s ease;
+        }
+
+        .frame-container:hover {
+            transform: scale(1.05);
+        }
+
+        .frame-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            background-color: #555;
+            color: white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #333;
+        }
+
+        .parallax {
+            background-image: url('image/homepage.jpg');
+            height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            color: #FFD700;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+     footer {
+    color: #fff;
+    padding: 5px 0;
+    position: absolute;
+    bottom: -50px; /* Adjust as needed */
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+        .custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid pink; /* Pink border */
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+    z-index: 9999;
+    background-color: pink; /* Pink background color */
+}
+
+.custom-cursor.hover {
+    transform: scale(2);
+    background: rgba(255, 192, 203, 0.5); /* Light pink background color on hover */
+}
+
+        /* Dark Mode Button Styles */
+        #darkModeBtn {
+            display: inline-block;
+            background-color: #FFD700;
+            color: #333333;
+            font-family: 'Lobster Two', cursive;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        #darkModeBtn:hover {
+            background-color: #FFA500; /* Change to desired hover color */
+        }
+	.frame-container {
+    position: relative;
+}
+
+.frame-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.5s ease;
+    position: relative;
+}
+
+.left-heart {
+    position: absolute;
+    left: 50px; /* Adjust as needed */
+    bottom: 50px; /* Adjust as needed */
+}
+
+.right-heart {
+    position: absolute;
+    right: 50px; /* Adjust as needed */
+    bottom: 50px; /* Adjust as needed */
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    fill: #FF69B4;
+    margin: 0 5px;
+    animation: pulse 1.5s infinite alternate; /* Add animation to pulse */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="profile-photo">
+            <img src="image/profilephoto.jpg" alt="Your Photo">
+        </div>
+        <div class="DishonorableMention">MALING !!</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">AboutMe</a></li>
+            <li><a href="family.html">Family</a></li>
+            <li><a href="friend.html">Friend</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="interest.html">Interest</a></li>
+            <li><a href="contactme.html">Contact Me</a></li>
+        </ul>
+        <button id="darkModeBtn">Dark Button</button>
+    </div>
+
+    <div class="parallax">
+        <div class="welcome-message">Welcome to the corner of my web!</div>
+    </div>
+
+    <div class="description">
+        <pre>"I'm Nur Amalin Aisyah Binti Ayud.
+Here, you'll find a glimpse into my world, journey to my personal 
+interests, my family, friends and everything in between.
+I'm thrilled to have you
+along for the journey. Feel free to browse around and don't
+hesitate to reach out if you have any questions or just want
+to say hello!"</pre>
+    </div>
+   <div class="frame-container">
+    <img src="image/home.jpg" alt="Photo 1">
+</div>
+
+<div class="left-heart">
+    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+
+
+</div>
+<div class="right-heart">
+    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+</div>
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">TOP</button>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Nur Amalin Aisyah. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <script>
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("scrollToTopBtn").style.display = "none";
+            }
+        }
+
+      document.getElementById('darkModeBtn').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.menu').classList.toggle('dark-mode');
+        // Toggle dark mode for the button itself
+        var darkModeBtn = document.getElementById('darkModeBtn');
+        darkModeBtn.classList.toggle('dark-mode');
+        // Change button text based on dark mode state
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeBtn.textContent = 'Light Mode';
+        } else {
+            darkModeBtn.textContent = 'Dark Mode';
+        }
+    });
+
+
+        document.addEventListener('mousemove', function(e) {
+            var cursor = document.getElementById('customCursor');
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseover', () => {
+                document.getElementById('customCursor').classList.add('hover');
+            });
+            link.addEventListener('mouseout', () => {
+                document.getElementById('customCursor').classList.remove('hover');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+   
+
